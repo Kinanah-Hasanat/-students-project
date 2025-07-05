@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void average(int cnt, int n) {
+    cout << "\nThe average is: " << static_cast<double>(cnt) / n << "\n";
+}
+
+bool pass(int k) {
+    return k >= 50;
+}
+
+int main() {
+    int cnt = 0;
+    vector<string> name;
+    vector<int> mark;
+    int n;
+
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        string tempName;
+        int tempMark;
+
+        cout << "\nEnter name of student #" << i + 1 << ": ";
+        cin >> tempName;
+        name.push_back(tempName);
+
+        cout << " Enter mark of " << tempName << ": ";
+        cin >> tempMark;
+        mark.push_back(tempMark);
+
+        cnt += tempMark;
+
+        if (pass(tempMark))
+            cout << tempName << " is PASS\n";
+        else
+            cout << tempName << " is FAIL\n";
+
+        cout << "-----------------------------\n";
+    }
+
+    average(cnt, n);
+
+    int* p = &mark[0];
+    cout << "\n Address of first mark: " << p << "\n";
+    cout << "Value of first mark using pointer: " << *p << "\n";
+
+    return 0;
+}
